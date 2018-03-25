@@ -1,0 +1,44 @@
+format_version: 2
+environments:
+  ci:
+    pipelines:
+      - "unit-test-webapp"
+      - "deploy-webapp"
+
+pipelines:
+  "teamNumberUI":
+    group: teamNumber
+    materials:
+      calculator-webapp:
+        git: "git@github.com:Sethuraman/bootcamp-just-cinemas-ui.git"
+    stages:
+      - test:
+          jobs:
+            test:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    yarn install
+                    yarn run test_with_coverage
+      - build:
+          jobs:
+            build:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    yarn install
+                    #todo: need to get the deployed api's public ip and then build with that.
+                    REACT_APP_API_URL="http://localhost:9090" yarn run build              
+
+      - deploy:
+           jobs:
+            build:
+              resources:
+                - node-and-java
+              tasks:
+                - script: |
+                    export AWS_ACCESS_KEY_ID=$AWS_ACCESS_STAGING_KEY
+                    export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_STAGING_KEY
+                    sh ./buildAndDeploy/deploy.sh teamNumberBootcampMarch2018
