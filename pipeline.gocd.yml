@@ -8,7 +8,7 @@ pipelines:
   "teamNumberUI":
     group: team1
     materials:
-      calculator-webapp:
+      ui:
         git: "git@github.com:Sethuraman/bootcamp-just-cinemas-ui.git"
     stages:
       - test:
@@ -32,9 +32,12 @@ pipelines:
 
       - deploy:
            jobs:
-            build:
+            deploy:
               resources:
                 - node-and-java
               tasks:
                 - script: |
+                    export AWS_ACCESS_KEY=$AWS_ACCESS_KEY
+                    export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+                    export AWS_REGION=$AWS_REGION
                     sh ./buildAndDeploy/deploy.sh team1BootcampMarch2018
