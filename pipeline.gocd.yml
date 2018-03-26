@@ -29,7 +29,6 @@ pipelines:
               tasks:
                 - script: |
                     yarn install
-                    #todo: need to get the deployed api's public ip and then build with that.
                     REACT_APP_API_URL="http://localhost:9090" yarn run build              
 
       - deploy:
