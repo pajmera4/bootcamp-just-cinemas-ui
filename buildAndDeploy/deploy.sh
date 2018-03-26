@@ -4,8 +4,8 @@ set -e
 tagName=$1
 
 cfn-create-or-update \
-  --stack-name calculator-web-app-s3-bucket-${stage} \
-  --template-body file://infra-cloudformation/just-cinemas-ui.yml \
+  --stack-name just-cinemas-ui-${tagName} \
+  --template-body file://buildAndDeploy/just-cinemas-ui.yml \
   --parameters ParameterKey=tagName,ParameterValue=${tagName} \
   --wait
 
