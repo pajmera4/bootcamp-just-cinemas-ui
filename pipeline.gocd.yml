@@ -2,9 +2,8 @@ format_version: 2
 environments:
   ci:
     pipelines:
-      - "unit-test-webapp"
-      - "deploy-webapp"
-
+      - "teamNumberUI"
+      
 pipelines:
   "teamNumberUI":
     group: team1
