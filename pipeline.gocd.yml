@@ -2,10 +2,10 @@ format_version: 2
 environments:
   ci:
     pipelines:
-      - "teamNumberUI"
+      - "team1UI"
       
 pipelines:
-  "teamNumberUI":
+  "team1UI":
     group: team1
     materials:
       ui:

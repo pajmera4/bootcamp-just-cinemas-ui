@@ -1,10 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## Follow the below steps
+## Just Cinemas UI
 
-1. Fork the repoistory
+To run your project  
+```yarn start```
+
+To run tests for your project  
+```yarn run test```  
+The tests will be started in the 'watch mode'. Everytime you make a change to any file in your project, the tests will be run.
+
+To add a dependency to your project  
+```yarn add <dep name>```
+
+
+
+## Follow the below steps to deploy it
+
+1. Fork the repository
 2. Add your team members as collaborators to the forked repo.
-3. Change "sh ./buildAndDeploy/deploy.sh team1-bootcamp-march2018" to "sh ./buildAndDeploy/deploy.sh <yourTeamNumber><sessionName>". Make sure the tag name that you are typing in does not have upper case characters. S3 does not allow upper case bucket names.
-4. Modify the pipeline.gocd.yml file and change everywhere "teamNumber" is to either "team1" or "team2" or "team3"
-5. Change "git: "git@github.com:Sethuraman/bootcamp-just-cinemas-ui.git"" to "git: <your forked repo on github>"
-
+3. You will need to make changes to the pipeline.gocd.yml to rename everywhere team1 is to team2, etc. depending on which team you are on.
+    1. Change all places where team1 appears to your team name.
+    2. Change the git url to the forked git hub url.
+    3. Change the deploy job script - ```sh ./buildAndDeploy/deploy.sh team1-bootcamp-march2018``` to ```sh ./buildAndDeploy/deploy.sh <yourteam-theevent>```. Ensure you don't use capital letters. S3 buckets don't like capital letters.  
+    4. The API URL appearing in the build job, can only be provided when the API project is built and deployed. Once you have deployed the API project, get the IP of the api and change it here.
+    
+     
