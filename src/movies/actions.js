@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import changeCase from 'change-case';
 import slug from 'slug';
 
